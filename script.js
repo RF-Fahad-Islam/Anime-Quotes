@@ -33,7 +33,7 @@ function generateQuote() {
     }).then(data => {
         quoteCard.innerHTML = `
         <div class="card-header placeholder-glow" id="quoteCardHeader">
-        <h3 class="text-center">#Quote - <b> ${data.character}</b></h3>
+        <h3 class="text-center"<b> ${data.character}</b></h3>
         </div>
         <div class="card-body">
         <blockquote class="blockquote mb-0">
@@ -41,7 +41,7 @@ function generateQuote() {
             <footer class="blockquote-footer"> <b class="text-primary">${data.character}</b> from <b title="${data.anime}">${data.anime}</b></footer>
         </blockquote>
         </div>`
-        generateQuoteBtn.innerHTML = "Success! Need More?"
+        generateQuoteBtn.innerHTML = "Get More..."
     }).catch(error=> {
         generateQuoteBtn.innerHTML = `Error!`
     })

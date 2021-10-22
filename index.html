@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Generate Random Anime Quotes | Made by Fahad</title>
+    <title>Find Anime Quotes | Made by Fahad</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="shortcut icon" href="https://lolfilter.com/files/thumbnails/1959364456256834.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,11 +19,12 @@
 
         .custom-btn {
             border-radius: 30px;
-            padding: 10px 98px;
+            padding: 10px 30px;
+            display: block;
             color: white;
             border: 2px solid #8bc34a;
             background: none;
-            font-size: 24px;
+            font-size: 1.5em;
             font-weight: bold;
             margin-top: 10px;
             font-family: system-ui;
@@ -81,12 +82,21 @@
             font-weight: bold;
             background: none;
             text-align: center;
-            transition:all 0.1s ;
+            transition: all 0.1s;
         }
-        
-        .form-select:hover{
+
+        .form-select:hover {
             border-radius: 10px;
             cursor: pointer;
+        }
+
+        .glass {
+            background: rgba(255, 253, 253, 0.555)!important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37)!important;
+            backdrop-filter: blur(4.5px)!important;
+            -webkit-backdrop-filter: blur(4.5px);
+            border-radius: 10px!important;
+            border: 2px solid rgba(255, 255, 255, 0.18)!important;
         }
     </style>
 </head>
@@ -99,9 +109,9 @@ background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 128%);">
             <div class="row" style="height: inherit;">
                 <div class="col-md-6 text-center my-5 text-white">
                     <div class="pageCenter">
-                        <h1>Looking for a quote from <b>Anime</b>? <br> 
-                            </h1>
-                            <h3 style="font-family: cursive;">Find Quotes Randomly!</h3>
+                        <h1>Looking for a quote from <b>Anime</b>? <br>
+                        </h1>
+                        <h3 style="font-family: cursive;">Find Quotes Randomly!</h3>
                         <div class="d-block mx-auto text-center">
                             <button class="custom-btn" id="generateQuote">✨ Generate Quote</button>
                         </div>
@@ -113,20 +123,21 @@ background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 128%);">
 
                 <div class="col-md-6 text-center">
                     <div class="pageCenter">
-                        <div class="card text-black" id="quoteCard" aria-hidden="true" style="background: #eee; color: white; border: 2px solid rgb(5, 188, 212); width: 100%;">
+                        <div class="card text-black glass" id="quoteCard" aria-hidden="true"
+                            style="background: #eee; color: white; border: 2px solid rgb(5, 188, 212); width: 100%;">
                             <div class="card-header placeholder-glow" id="quoteCardHeader">
                                 <span class="placeholder bg-secondary col-6"></span>
                                 <span class="placeholder bg-secondary col-4"></span>
                             </div>
-                            <div class="card-body"  id="quoteArea">
-                              <blockquote class="blockquote mb-0 placeholder-glow">
-                                <footer class="blockquote-footer bg-secondary placeholder col-12"></footer>
-                                <footer class="blockquote-footer placeholder col-12"></footer>
-                                <span class="placeholder col-6"></span>
-                                <span class="placeholder col-5"></span>
-                              </blockquote>
+                            <div class="card-body" id="quoteArea">
+                                <blockquote class="blockquote mb-0 placeholder-glow">
+                                    <footer class="blockquote-footer bg-secondary placeholder col-12"></footer>
+                                    <footer class="blockquote-footer placeholder col-12"></footer>
+                                    <span class="placeholder col-6"></span>
+                                    <span class="placeholder col-5"></span>
+                                </blockquote>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
