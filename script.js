@@ -1,9 +1,13 @@
-
 let api;
+let page = 2
+let count = 0
 let generateQuoteBtn = document.getElementById("generateQuote")
 let quoteArea = document.getElementById("quoteArea")
 let quoteCard = document.getElementById("quoteCard")
 let quoteCardHeader = document.getElementById("quoteCardHeader")
+let searchBar = document.getElementById("searchBar")
+let form = document.getElementById("form")
+form.addEventListener("submit", e=> e.preventDefault())
 const skeletonOfQuoteCard = `
 <div class="card-header placeholder-glow" id="quoteCardHeader">
     <span class="placeholder bg-secondary col-6"></span>
@@ -19,18 +23,27 @@ const skeletonOfQuoteCard = `
 </div>
 `
 generateQuoteBtn.addEventListener("click", () => {
-    api = `https://animechan.vercel.app/api/random`
+    if (searchBar.value == "") {
+        api = `https://animechan.vercel.app/api/random`
+    } else {
+        api = `https://animechan.vercel.app/api/quotes/character?name=${searchBar.value}&page=1`
+    }
     generateQuoteBtn.innerHTML = `<div class="spinner-border" role="status">
-    <span class="visually-hidden">Loading...</span>
-    </div>`
+<span class="visually-hidden">Loading...</span>
+</div>`
     quoteCard.innerHTML = skeletonOfQuoteCard
-    generateQuote()
+    generateQuote(api)
 })
 
-function generateQuote() {
+function generateQuote(api) {
     fetch(api).then(response => {
-      return response.json()
+        return response.json()
     }).then(data => {
+        if(searchBar.value !== ""){
+            data = data[Math.round(Math.random()*data.length)]
+        }
+        console.log(data);
+        
         quoteCard.innerHTML = `
         <div class="card-header placeholder-glow" id="quoteCardHeader">
         <h3 class="text-center"<b> ${data.character}</b></h3>
@@ -42,7 +55,9 @@ function generateQuote() {
         </blockquote>
         </div>`
         generateQuoteBtn.innerHTML = "Get More..."
-    }).catch(error=> {
-        generateQuoteBtn.innerHTML = `Error!`
+        generateQuoteBtn.style.backgroundColor = "#8bc34a"
+    }).catch(error => {
+        generateQuoteBtn.innerHTML = `Not Found or Error!`
+        generateQuoteBtn.style.backgroundColor = "red"
     })
 }
